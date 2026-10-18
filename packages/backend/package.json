@@ -1,0 +1,33 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "bun run --hot src/index.bun.ts",
+        "dev:wrangler": "wrangler dev --port 8787 --config ./wrangler.toml",
+        "build": "tsc --noEmit",
+        "deploy": "wrangler deploy",
+        "deploy:preview": "wrangler deploy --env preview",
+        "type-check": "tsc --noEmit",
+        "clean": "rimraf dist .wrangler",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:ui": "vitest --ui",
+        "test:log": "mkdir -p test-logs && vitest run 2>&1 | tee test-logs/all-tests-$(date +%Y%m%d-%H%M%S).log"
+    },
+    "dependencies": {
+        "@anthropic-ai/sdk": "^0.57.0",
+        "@google/genai": "^1.12.0",
+        "hono": "^4.0.0",
+        "openai": "^5.11.0"
+    },
+    "devDependencies": {
+        "@cloudflare/workers-types": "^4.20240512.0",
+        "@types/node": "^20.19.9",
+        "@vitest/ui": "^3.2.4",
+        "bun-types": "^1.2.19",
+        "miniflare": "^4.20250712.2",
+        "typescript": "^5.0.0",
+        "vitest": "^3.2.4"
+    }
+}
